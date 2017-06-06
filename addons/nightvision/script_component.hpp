@@ -41,4 +41,6 @@
 #define st_nvg_NoiseIntensity_Max 0.55
 
 #define st_nvg_NoiseSharpness_Min 1.2
-#define st_nvg_NoiseSharpness_Max 1 
+#define st_nvg_NoiseSharpness_Max 1
+
+#define st_nvg_MinNVGGen 3

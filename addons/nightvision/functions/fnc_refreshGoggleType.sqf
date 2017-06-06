@@ -86,7 +86,7 @@ systemChat format ["EyeCups: %1, HideHex %2, NVGen: %3, BluRadius: %4", _eyeCups
 #endif
 
 GVAR(nvgBlurRadius) = _blurRadius;
-GVAR(nvgGeneration) = _nvgGen;
+GVAR(nvgGeneration) = _nvgGen max st_nvg_MinNVGGen;
 
 // Setup border and hex image based on NVG config:
 private _scale = (call FUNC(kkTrueZoom)) * 3.00001;
