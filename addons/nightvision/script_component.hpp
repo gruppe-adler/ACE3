@@ -22,8 +22,8 @@
 
 #define st_nvg_CameraBlurSights_MaxBlur 6
 
-#define st_nvg_MinFog 0.2 
-#define st_nvg_MaxFog 0.3
+#define st_nvg_MinFog 0.075
+#define st_nvg_MaxFog 0.125
 
 #define st_nvg_Grain_Min 2.25
 #define st_nvg_Grain_Max 2.7
