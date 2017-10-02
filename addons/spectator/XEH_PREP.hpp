@@ -3,6 +3,7 @@ PREP(cam);
 PREP(cam_prepareTarget);
 PREP(cam_resetTarget);
 PREP(cam_setCameraMode);
+PREP(cam_switchToCamera);
 PREP(cam_setTarget);
 PREP(cam_setVisionMode);
 PREP(cam_tick);

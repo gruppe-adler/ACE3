@@ -146,6 +146,15 @@ if (_key == DIK_F1) exitWith {
     true
 };
 
+// Handle toggling camera
+if (_key == DIK_F2) exitWith {
+    GVAR(camType) = if (GVAR(camType) == "Camera") then { "CamCurator"} else { "Camera"};
+
+    [GVAR(camType)] call FUNC(cam_switchToCamera);
+
+    true
+};
+
 // Handle toggle focus info widget
 if (_key == DIK_I) exitWith {
     GVAR(uiWidgetVisible) = !GVAR(uiWidgetVisible);

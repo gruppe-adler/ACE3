@@ -7,6 +7,7 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 // Used by public functions
+GVAR(availableCamTypes) = ["CamCurator", "Camera"];
 GVAR(availableModes) = [MODE_FREE, MODE_FPS, MODE_FOLLOW];
 GVAR(availableSides) = [west,east,resistance,civilian];
 GVAR(availableVisions) = [VISION_NORM,VISION_NVG,0,1];

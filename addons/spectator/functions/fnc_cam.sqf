@@ -26,6 +26,7 @@ if (_init isEqualTo !isNil QGVAR(camera)) exitWith {};
 // Destroy: Camera Stuff > Camera > Vars
 if (_init) then {
     // Start tracking camera attributes if not pre-set by public function
+    ISNILS(GVAR(camType),"CamCurator");
     ISNILS(GVAR(camMode),MODE_FREE);
     ISNILS(GVAR(camVision),VISION_NORM);
     ISNILS(GVAR(camFocus),objNull);
@@ -47,36 +48,8 @@ if (_init) then {
     GVAR(camLights)             = [];
     GVAR(camLight)              = false;
 
-    // Handle pre-set pos and dir (delete GVARs when done)
-    private _pos = if (isNil QGVAR(camPos)) then {eyePos player} else {GVAR(camPos)};
-    private _dir = if (isNil QGVAR(camDir)) then {getDirVisual player} else {GVAR(camDir)};
-    GVAR(camPos) = nil;
-    GVAR(camDir) = nil;
 
-    // Create the camera (CamCurator required for engine driven controls)
-    private _camera = "CamCurator" camCreate _pos;
-
-    if (isNull _camera) exitWith { ERROR("Camera wasn't created successfully"); };
-
-    // Switch to the camera and set its attributes
-    _camera cameraEffect ["internal", "back"];
-    _camera setPosASL _pos;
-    _camera setDir _dir;
-    _camera camCommand "maxPitch 89";
-    _camera camCommand "minPitch -89";
-    _camera camCommand format ["speedDefault %1", SPEED_DEFAULT];
-    _camera camCommand format ["speedMax %1", SPEED_FAST];
-    _camera camCommand "ceilingHeight 5000";
-    cameraEffectEnableHUD true;
-
-    // If camera followed terrain it would be annoying to track units, etc.
-    _camera camCommand "atl off";
-
-    // Camera speed should be consistent irrespective of height (painfully slow otherwise)
-    _camera camCommand "surfaceSpeed off";
-
-    // Store camera
-    GVAR(camera) = _camera;
+    [GVAR(camType)] call FUNC(cam_switchToCamera);
 
     // Create dummy target used for follow camera
     GVAR(camDummy) = "Logic" createVehicleLocal getPosASLVisual GVAR(camFocus);
@@ -109,15 +82,7 @@ if (_init) then {
     removeMissionEventHandler ["EachFrame", GVAR(camTick)];
     GVAR(camTick) = nil;
 
-    // Return to player view
-    if !(isNull GVAR(camera)) then {
-        GVAR(camera) cameraEffect ["terminate", "back"];
-        deleteVehicle GVAR(camera);
-    };
-    player switchCamera "internal";
-
-    // Remove camera variable
-    GVAR(camera) = nil;
+    [""] call FUNC(cam_switchToCamera);
 
     // Destroy dummy target
     deleteVehicle (GVAR(camDummy));
