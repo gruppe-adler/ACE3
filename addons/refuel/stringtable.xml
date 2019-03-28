@@ -442,6 +442,10 @@
             <Polish>Długość węża paliwowego</Polish>
             <Korean>주유기 호스 길이</Korean>
         </Key>
+        <Key ID="STR_ACE_Refuel_RefuelSettings_tickTime_DisplayName">
+            <English>Delay</English>
+            <German>Verzögerung</German>
+        </Key>
         <Key ID="STR_ACE_Refuel_fuelCargo_edenName">
             <English>Fuel Cargo Volume</English>
             <German>Tankvolumen</German>

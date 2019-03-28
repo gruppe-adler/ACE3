@@ -17,3 +17,12 @@
     true, // isGlobal
     {[QGVAR(hoseLength), _this] call EFUNC(common,cbaSettings_settingChanged)}
 ] call CBA_settings_fnc_init;
+
+[
+    QGVAR(tickTime), "SLIDER",
+    [LSTRING(RefuelSettings_tickTime_DisplayName)],
+    [localize ELSTRING(OptionsMenu,CategoryLogistics), localize "str_state_refuel"],
+    [0.01,5,0.5,2], // [min, max, default value, trailing decimals (-1 for whole numbers only)]
+    true, // isGlobal
+    {[QGVAR(tickTime), _this] call EFUNC(common,cbaSettings_settingChanged)}
+] call CBA_settings_fnc_init;
