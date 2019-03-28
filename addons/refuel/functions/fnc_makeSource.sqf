@@ -33,6 +33,9 @@ params [
 TRACE_3("makeSource",_source,_fuelCargo,_hooks);
 
 private _fuelCargoConfig = getNumber (configFile >> "CfgVehicles" >> typeOf _source >> QGVAR(fuelCargo));
+if (_fuelCargoConfig == 0) then {
+    _fuelCargoConfig = _source getVariable [QGVAR(maxFuelCargo), 0];
+}
 
 if (
     isNull _source
