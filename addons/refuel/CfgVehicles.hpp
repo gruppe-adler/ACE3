@@ -374,6 +374,7 @@ class CfgVehicles {
     class Truck_02_fuel_base_F: Truck_02_base_F {
         transportFuel = 0; //3k
         GVAR(hooks)[] = {{0.99,-3.47,-0.67},{-1.04,-3.47,-0.67}};
+        GVAR(cargoSockets)[] = {{0, 0, 0}};
         GVAR(fuelCargo) = 10000;
     };
     class Truck_02_water_base_F: Truck_02_fuel_base_F {
@@ -383,12 +384,14 @@ class CfgVehicles {
     class B_Truck_01_fuel_F: B_Truck_01_mover_F {
         transportFuel = 0; //3k
         GVAR(hooks)[] = {{.28,-4.99,-.3},{-.25,-4.99,-.3}};
+        GVAR(cargoSockets)[] = {{0, 0, 0}};
         GVAR(fuelCargo) = 10000;
     };
 
     class O_Truck_03_fuel_F: Truck_03_base_F {
         transportFuel = 0; //3k
         GVAR(hooks)[] = {{1.3,-1.59,-.62},{-1.16,-1.59,-.62}};
+        GVAR(cargoSockets)[] = {{0, 0, 0}};
         GVAR(fuelCargo) = 10000;
     };
 
@@ -403,6 +406,7 @@ class CfgVehicles {
     class Land_Pod_Heli_Transport_04_fuel_F: Pod_Heli_Transport_04_base_F {
         transportFuel = 0; //3k
         GVAR(hooks)[] = {{-1.49,1.41,-.3}};
+        GVAR(cargoSockets)[] = {{0, 0, 0}};
         GVAR(fuelCargo) = 10000;
     };
 
@@ -410,12 +414,14 @@ class CfgVehicles {
     class B_Slingload_01_Fuel_F: Slingload_01_Base_F {
         transportFuel = 0; //3k
         GVAR(hooks)[] = {{0.55,3.02,-0.5},{-0.52,3.02,-0.5}};
+        GVAR(cargoSockets)[] = {{0, 0, 0}};
         GVAR(fuelCargo) = 10000;
     };
 
     class O_Heli_Transport_04_fuel_F: Heli_Transport_04_base_F  {
         transportFuel = 0; //3k
         GVAR(hooks)[] = {{-1.52,1.14,-1.18}};
+        GVAR(cargoSockets)[] = {{0, 0, 0}};
         GVAR(fuelCargo) = 10000;
     };
 
@@ -437,6 +443,7 @@ class CfgVehicles {
 
         transportFuel = 0; //60k
         GVAR(hooks)[] = {{-3.35,2.45,0.17}};
+        GVAR(cargoSockets)[] = {{0, 0, 0}};
         GVAR(fuelCargo) = 60000;
     };
 
@@ -453,6 +460,7 @@ class CfgVehicles {
     class Land_FlexibleTank_01_F: FlexibleTank_base_F {
         transportFuel = 0; //300
         GVAR(hooks)[] = {{0, 0, 0.5}};
+        GVAR(cargoSockets)[] = {{0, 0, 0}};
         GVAR(fuelCargo) = 300;
     };
 
