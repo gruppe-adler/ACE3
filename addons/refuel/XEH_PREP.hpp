@@ -1,3 +1,4 @@
+PREP(addFuel);
 PREP(canCheckFuel);
 PREP(canDisconnect);
 PREP(canReturnNozzle);

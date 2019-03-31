@@ -3,7 +3,8 @@
 params [
     [_sink, objNull],
     [_getOccupied, true],
-    [_getUnoccupied, true]
+    [_getUnoccupied, true],
+    [_getNozzles, false]
 ];
 
 _config = (configFile >> "CfgVehicles" >> (typeOf _sink) >> QGVAR(cargoSockets));
@@ -20,6 +21,12 @@ if (!_getOccupied) then {
 if (!_getUnoccupied) then {
     _sockets = _sockets select {
         !(isNull (_sink getVariable [CARGONOZZLE(_x), objNull]))
+    };
+};
+
+if (_getNozzles) exitWith {
+    _sockets apply {
+        _sink getVariable [CARGONOZZLE(_x), objNull]
     };
 };
 
