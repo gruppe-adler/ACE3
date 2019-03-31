@@ -6,6 +6,10 @@ if (isServer) then {
 
 [QGVAR(initSource), LINKFUNC(initSource)] call CBA_fnc_addEventHandler;
 
+[QGVAR(stream), LINKFUNC(onStream)] call CBA_fnc_addEventHandler;
+[QGVAR(backpressure), LINKFUNC(onBackPressure)] call CBA_fnc_addEventHandler;
+[QGVAR(touch), LINKFUNC(onTouch)] call CBA_fnc_addEventHandler;
+
 if (!hasInterface) exitWith {};
 
 ["isNotRefueling", {!((_this select 0) getVariable [QGVAR(isRefueling), false])}] call EFUNC(common,addCanInteractWithCondition);

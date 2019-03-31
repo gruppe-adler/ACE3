@@ -39,6 +39,8 @@ _flow = (_sinkCapacity - _sinkFuel) min _flow; // dont send more than it can tak
 
 if (_flow == 0) exitWith {false};
 
+[_source, _available - __flow] call FUNC(setFuel);
+
 [
     QGVAR(stream),
     [_source, _flow, _sink, _mode], // TODO parameters?
