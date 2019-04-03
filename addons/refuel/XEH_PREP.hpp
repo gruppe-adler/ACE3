@@ -22,6 +22,7 @@ PREP(makeSource);
 PREP(moduleRefuelSettings);
 PREP(onBackPressure);
 PREP(onMouseButtonDown);
+PREP(onNozzleSwitch);
 PREP(onStream);
 PREP(onTouch);
 PREP(readFuelCounter);

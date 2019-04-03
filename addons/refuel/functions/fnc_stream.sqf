@@ -1,4 +1,4 @@
-#include "component.hpp"
+#include "script_component.hpp"
 #define MAX_FUELTICK 5
 
 /*
