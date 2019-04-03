@@ -13,7 +13,7 @@ PREP(disconnect);
 PREP(dropNozzle);
 PREP(getFuel);
 PREP(getCargoSockets);
-PREP(getMaxFuelCargo);
+PREP(getMaxFuel);
 PREP(handleDisconnect);
 PREP(handleRespawn);
 PREP(initSource);
