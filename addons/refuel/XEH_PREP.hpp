@@ -8,6 +8,7 @@ PREP(canTurnOn);
 PREP(checkFuel);
 PREP(canConnectNozzleToCargoTank);
 PREP(canConnectNozzleToMotorTank);
+PREP(clockwork);
 PREP(connectNozzleAction);
 PREP(disconnect);
 PREP(dropNozzle);
