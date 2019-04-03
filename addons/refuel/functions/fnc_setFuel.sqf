@@ -16,9 +16,24 @@
  * Public: Yes
  */
 
-params [["_source", objNull, [objNull]], ["_fuel", nil, [0]]];
+params [
+    ["_source", objNull, [objNull]],
+    ["_fuel", nil, [0]],
+    ["_tankType", "cargo", ["cargo", "motor"]]
+];
 
 if (isNull _source ||
     {isNil "_fuel"}) exitWith {};
 
-_source setVariable [QGVAR(currentFuelCargo), _fuel, true];
+
+if (_tankType == "motor") then {
+    private _maxFuel = [_source, _tankType] call FUNC(getMaxFuel);
+    if (_maxFuel == 0) then {
+        WARNING("aaaah max motor fuel == 0");
+    } else {
+        _source setFuel (_fuel / _maxFuel);
+    };
+} else {
+    _source setVariable [QGVAR(currentFuelCargo), _fuel, true];
+};
+

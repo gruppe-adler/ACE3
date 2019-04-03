@@ -1,3 +1,4 @@
+#include "component.hpp"
 /*
 
 * FUNC(onStream)
@@ -16,21 +17,11 @@ params [
 private _currentFuel = [_sink, _tankType] call FUNC(getFuel);
 private _fuelLeft = ([_sink, _tankType] call FUNC(getMaxFuel)) - _currentFuel;
 private _fuelToBeAdded = _fuelLeft min _flow;
+private _backFlow = (_flow - _fuelLeft) max 0;
 
+[_sink, _fuelToBeAdded + _currentFuel, _tankType] call FUNC(setFuel);
 
-switch (_tankType) do {
-    case "cargo": {
-        private _fuel
-        [_sink, _fuelToBeAdded + _currentFuel] call FUNC(setFuel);
-    };
-    case "motor": {
-        // TODO magic calculation, see fnc_refuel
-    };
-};
-
-if (_flow > _fuelLeft) then {
-    private _backFlow = _flow - _fuelLeft;
-
+if (_backFlow > 0) then {
     [
         QGVAR(backPressure),
         [_source, _backFlow],
