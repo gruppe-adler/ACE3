@@ -32,7 +32,7 @@ params [
 ];
 TRACE_3("makeSource",_source,_fuelCargo,_hooks);
 
-private _fuelCargoConfig = [_source] call FUNC(getMaxFuelCargo);
+private _fuelCargoConfig = [_source, "cargo"] call FUNC(getMaxFuel);
 
 if (
     isNull _source

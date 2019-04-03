@@ -10,15 +10,15 @@ params [
     ["_source", objNull],
     ["_flow", 0],
     ["_sink", objNull],
-    ["_mode", ""]
+    ["_tankType", "", ["cargo", "motor"]]
 ];
 
-private _currentFuel = ([_sink, _mode] call FUNC(getFuel));
-private _fuelLeft = ([_sink, _mode] call FUNC(getMaxFuelCargo)) - _currentFuel;
+private _currentFuel = [_sink, _tankType] call FUNC(getFuel);
+private _fuelLeft = ([_sink, _tankType] call FUNC(getMaxFuel)) - _currentFuel;
 private _fuelToBeAdded = _fuelLeft min _flow;
 
 
-switch (_mode) do {
+switch (_tankType) do {
     case "cargo": {
         private _fuel
         [_sink, _fuelToBeAdded + _currentFuel] call FUNC(setFuel);
