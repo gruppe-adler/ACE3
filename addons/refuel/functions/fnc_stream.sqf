@@ -20,16 +20,22 @@ _source = _nozzle getVariable [GVAR(source), objNull];
 _tankType = _nozzle getVariable [GVAR(tankType), ""];
 
 
-private _lastTick = _nozzle getVariable [GVAR(lastTick), CBA_MissionTime];
-_nozzle setVariable [GVAR(lastTick), CBA_MissionTime];
+private _lastTick = _nozzle getVariable [QGVAR(lastTickMissionTime), CBA_MissionTime];
+_nozzle setVariable [QGVAR(lastTickMissionTime), CBA_MissionTime];
 
 private _timeSinceLast = (CBA_MissionTime - _lastTick) min MAX_FUELTICK;
+
+if (_timeSinceLast == 0) exitWith {};
 
 private _available = [_source, _tankType] call FUNC(getFuel);
 
 private _sinkConfig = configFile >> "CfgVehicles" >> typeOf _sink;
 
 private _flowRate = getNumber (_sinkConfig >> QGVAR(flowRate)) * GVAR(rate);
+if (_flowRate == 0) then {
+    WARNING_1("no flowRate configured for %1 (using 1 as fallback)", typeOf _sink);
+    _flowRate = 1;
+};
 
 private _flow = _flowRate * _timeSinceLast;
 
