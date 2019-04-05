@@ -1,6 +1,8 @@
+#include "script_component.hpp"
+
 params [
     ["_object", objNull, [objNull]],
-    ["_tankType", "", ["cargo", "motor"]]
+    ["_tankType", "cargo", ["cargo", "motor"]]
 ];
 
 private _config = configFile >> "CfgVehicles" >> typeOf _object;

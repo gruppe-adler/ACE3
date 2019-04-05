@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*adds fuel to a given tank, and returns the overflow */
 
 params [

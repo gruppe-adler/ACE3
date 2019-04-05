@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 #define CARGONOZZLE(var) QGVAR(cargoNozzle) + (toString var)
 
 params [
