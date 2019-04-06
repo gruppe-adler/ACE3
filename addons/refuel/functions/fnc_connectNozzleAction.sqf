@@ -119,7 +119,10 @@ private _attachPosModel = _sink worldToModel (ASLtoAGL _bestPosASL);
             _source setVariable [QGVAR(fuelCounter), _fuel, true];
         };
 
-        [_unit, _sink, _nozzle, _endPosTestOffset] call FUNC(refuel);
+        // [_unit, _sink, _nozzle, _endPosTestOffset] call FUNC(refuel);
+        // turnOn triggers events and does the rest
+        // TODO do the distance-checking etc server-side in PFH
+
 
 
         [

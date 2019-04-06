@@ -2,7 +2,7 @@
 
 if (isServer) then {
     addMissionEventHandler ["HandleDisconnect", {call FUNC(handleDisconnect)}];
-    call FUNC(clockwork);
+    [] call FUNC(clockwork);
 };
 
 [QGVAR(initSource), LINKFUNC(initSource)] call CBA_fnc_addEventHandler;
