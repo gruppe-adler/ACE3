@@ -65,3 +65,11 @@ _transition = [
     {!(_this call FUNC(canStayConnected)},
     {}
 ] call CBA_statemachine_fnc_addTransition;
+
+
+// also:
+// * listen to event when client connects the thing.
+// -> thats it f yeah!
+
+// no onTouch needed
+
