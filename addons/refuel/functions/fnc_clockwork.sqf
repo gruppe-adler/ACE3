@@ -10,5 +10,58 @@ _state = [
         _this call FUNC(stream);
     },
     {},
-    {}
+    {},
+    "on"
+
 ] call CBA_statemachine_fnc_createState;
+
+
+_state = [
+    _sm,
+    {},
+    {},
+    {},
+    "off"
+] call CBA_statemachine_fnc_createState;
+
+
+_state = [
+    _sm,
+    {},
+    { /*disconnect code, remove from state machine*/
+
+    },
+    {},
+    "disconnected"
+] call CBA_statemachine_fnc_createState;
+
+_transition = [
+    _sm,
+    "on", "off",
+    {!(_this getVariable[GVAR(switchedOn), false])},
+    {}
+] call CBA_statemachine_fnc_addTransition;
+
+
+_transition = [
+    _sm,
+    "off", "on",
+    {_this getVariable[GVAR(switchedOn), false]},
+    {}
+] call CBA_statemachine_fnc_addTransition;
+
+
+_transition = [
+    _sm,
+    "on", "disconnected",
+    {!(_this call FUNC(canStayConnected)},
+    {}
+] call CBA_statemachine_fnc_addTransition;
+
+
+_transition = [
+    _sm,
+    "off", "disconnected",
+    {!(_this call FUNC(canStayConnected)},
+    {}
+] call CBA_statemachine_fnc_addTransition;
