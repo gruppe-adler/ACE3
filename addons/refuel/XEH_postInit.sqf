@@ -9,8 +9,7 @@ if (isServer) then {
 
 [QGVAR(stream), LINKFUNC(onStream)] call CBA_fnc_addEventHandler;
 [QGVAR(backpressure), LINKFUNC(onBackPressure)] call CBA_fnc_addEventHandler;
-[QGVAR(touch), LINKFUNC(onTouch)] call CBA_fnc_addEventHandler;
-[QGVAR(nozzleSwitch), LINKFUNC(onNozzleSwitch)] call CBA_fnc_addEventHandler;
+[QGVAR(nozzleConnect), LINKFUNC(onNozzleConnect)] call CBA_fnc_addEventHandler;
 
 if (!hasInterface) exitWith {};
 

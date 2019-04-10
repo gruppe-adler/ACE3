@@ -121,6 +121,12 @@ private _attachPosModel = _sink worldToModel (ASLtoAGL _bestPosASL);
 
         [_unit, _sink, _nozzle, _endPosTestOffset] call FUNC(refuel);
 
+
+        [
+            QGVAR(connect),
+            [_nozzle, true]
+        ] call CBA_fnc_serverEvent;
+
         if ([_unit, _nozzle] call FUNC(canTurnOn)) then {
             _unit setVariable [QGVAR(tempFuel), nil];
             [_unit, _nozzle] call FUNC(turnOn);
