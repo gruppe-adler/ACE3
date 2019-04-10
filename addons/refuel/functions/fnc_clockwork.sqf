@@ -38,16 +38,24 @@ _state = [
 _transition = [
     _sm,
     "on", "off",
-    {!(_this getVariable[GVAR(switchedOn), false])},
-    {}
+    {
+        !(_this getVariable[GVAR(switchedOn), false])
+    },
+    {
+        _this setVariable [QGVAR(lastTickMissionTime), nil];
+    }
 ] call CBA_statemachine_fnc_addTransition;
 
 
 _transition = [
     _sm,
     "off", "on",
-    {_this getVariable[GVAR(switchedOn), false]},
-    {}
+    {
+        _this getVariable[GVAR(switchedOn), false]
+    },
+    {
+        _this setVariable [QGVAR(lastTickMissionTime), CBA_missionTime];
+    }
 ] call CBA_statemachine_fnc_addTransition;
 
 

@@ -65,14 +65,12 @@ if (_maxFuel == 0) then {
     if (_fueling) then {
         private _fuelInSource = [_source] call FUNC(getFuel);
         if (_fuelInSource == 0) exitWith {
-            [LSTRING(Hint_SourceEmpty), 2, _unit] call EFUNC(common,displayTextStructured);
-            _nozzle setVariable [QGVAR(lastTickMissionTime), nil];
+            [LSTRING(Hint_SourceEmpty), 2, _unit] call EFUNC(common,displayTextStructured); // TODO move that logic shit to clockwork
             _nozzle setVariable [QGVAR(isRefueling), false, true];
         };
 
         // Calculate rate using mission time to take time acceleration and pause into account
-        private _rateTime = _rate * (CBA_missionTime - (_nozzle getVariable [QGVAR(lastTickMissionTime), CBA_missionTime]));
-        _nozzle setVariable [QGVAR(lastTickMissionTime), CBA_missionTime];
+        private _rateTime = _rate * (CBA_missionTime - (_nozzle getVariable [QGVAR(lastTickMissionTime), CBA_missionTime])); // TODO move that logic shit to clockwork
 
         if !(_fuelInSource == REFUEL_INFINITE_FUEL) then {
             _fuelInSource = _fuelInSource - _rateTime;

@@ -10,9 +10,13 @@ _nozzle setVariable [QGVAR(isRefueling), _switchState, true];
 ISNILS(GVAR(watchedNozzles), []);
 
 if (_switchState) then {
-    _nozzle setVariable [QGVAR(lastTickMissionTime), CBA_MissionTime];
     GVAR(watchedNozzles) pushBackUnique _nozzle;
 } else {
-    _nozzle setVariable [QGVAR(lastTickMissionTime), nil];
-    GVAR(watchedNozzles) deleteAt (GVAR(watchedNozzles) find _nozzle);
+    //     GVAR(watchedNozzles) deleteAt (GVAR(watchedNozzles) find _nozzle);
+    // no. do manual transition to disconnected instead
+    [
+
+    ] call CBA_statemachine_fnc_manualTransition; // TODO do.
+
+
 };
