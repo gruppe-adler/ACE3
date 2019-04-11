@@ -2,17 +2,32 @@
 
 ISNILS(GVAR(refuelingNozzles), []);
 
-_sm = [{GVAR(refuelingNozzles)}, true] call CBA_statemachine_fnc_create;
+private _sm = [{GVAR(refuelingNozzles)}, true] call CBA_statemachine_fnc_create;
+private _state = [
+    _sm,
+    {
+        private _sink = _this getVariable [GVAR(sink), objNull];
+        private _source = _this getVariable [GVAR(source), objNull];
+
+        if (CBA_MissionTime - (_this getVariable [GVAR(lastTickMissionTime), CBA_MissionTime]) < 0.2) exitWith {};
+
+        _this call FUNC(stream);
+    },
+    {},
+    {},
+    "connected"
+] call CBA_statemachine_fnc_addState;
+
 _state = [
     _sm,
     {
         private _sink = _this getVariable [GVAR(sink), objNull];
         private _source = _this getVariable [GVAR(source), objNull];
+
         if (CBA_MissionTime - (_this getVariable [GVAR(lastTickMissionTime), CBA_MissionTime]) < 0.2) exitWith {};
         _this call FUNC(stream);
     },
     {},
-<<<<<<< HEAD
     {},
     "on"
 
@@ -84,7 +99,4 @@ _transition = [
 
 // no onTouch needed
 
-=======
-    {}
 ] call CBA_statemachine_fnc_addState;
->>>>>>> b0rked wip
