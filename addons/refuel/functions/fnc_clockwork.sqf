@@ -1,8 +1,8 @@
 #include "script_component.hpp";
 
-ISNILS(GVAR(refuelingNozzles), []);
+ISNILS(GVAR(connectedNozzles), []);
 
-private _sm = [{GVAR(refuelingNozzles)}, true] call CBA_statemachine_fnc_create;
+private _sm = [{GVAR(connectedNozzles)}, true] call CBA_statemachine_fnc_create;
 private _state = [
     _sm,
     {
@@ -46,8 +46,9 @@ _state = [
 _state = [
     _sm,
     {},
-    { /*disconnect code, remove from state machine*/
-
+    {
+        // remove from state machine
+        GVAR(connectedNozzles) deleteAt (GVAR(connectedNozzles) find _this);
     },
     {},
     "disconnected"
@@ -92,11 +93,4 @@ _transition = [
     {}
 ] call CBA_statemachine_fnc_addTransition;
 
-
-// also:
-// * listen to event when client connects the thing.
-// -> thats it f yeah!
-
-// no onTouch needed
-
-] call CBA_statemachine_fnc_addState;
+GVAR(clockwork) = _sm;
